@@ -69,3 +69,7 @@ b
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 ]
 -src/main/java/codility/lessons/PermCheck.java,5/9/59d8b5d4e6c9723a2a619be01c4f1fd40afaae47
+\
+,src/main/java/codility/lessons/CountDiv.java,3/5/35855f1247b9cc4e456ae4f871efb86176a2d064
+b
+2src/main/java/codility/lessons/MinAvgTwoSlice.java,3/b/3bd98490d479d1f97898c7e8e5e1a6a607259815
