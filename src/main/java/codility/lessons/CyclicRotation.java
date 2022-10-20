@@ -1,4 +1,4 @@
-package codility.lessons.old;
+package codility.lessons;
 
 import java.util.Arrays;
 
@@ -41,6 +41,21 @@ public class CyclicRotation {
             }
         }
 
+        return result;
+    }
+
+    private static int[] solution2(int[] A, int K) {
+        int len = A.length;
+        if (len == 0) return A;
+        int mv = K % len;
+        int[] result = new int[len];
+        for (int i = 0; i < len; i++) {
+            if (i + mv < len) {
+                result[i + mv] = A[i];
+            } else {
+                result[i + mv - len] = A[i];
+            }
+        }
         return result;
     }
 }

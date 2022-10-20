@@ -1,4 +1,4 @@
-package codility.lessons.old;
+package codility.lessons;
 
 public class CountDiv {
 
