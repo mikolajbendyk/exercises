@@ -37,4 +37,41 @@ public class BinaryGap {
             return result-1;
         }
     }
+
+    public static int solution2(int N) {
+        String binary = Integer.toBinaryString(N);
+        char[] arr = binary.toCharArray();
+
+        int result = 0;
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i] == '1' && arr[i + 1] == '0') {
+                for (int j = i + 2; j < arr.length; j++) {
+                    if (arr[j] == '1') {
+                        int newResult = j - i - 1;
+                        result = newResult > result ? newResult : result;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+
+        // return findLongest(arr);
+    }
+
+    private static int findLongest(char[] arr) {
+        int result = 0;
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i] == '1' && arr[i + 1] == '0') {
+                for (int j = i + 2; j < arr.length; j++) {
+                    if (arr[j] == '1') {
+                        int newResult = j - i - 1;
+                        result = newResult > result ? newResult : result;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
 }
