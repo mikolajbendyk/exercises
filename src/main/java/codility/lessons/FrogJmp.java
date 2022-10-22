@@ -25,4 +25,13 @@ public class FrogJmp {
             return jumps + 1;
         }
     }
+
+    private static int solutionJavaStart(int X, int Y, int D) {
+        int road = Y - X;
+        int jumps = road / D;
+        if (road % D > 0) {
+            jumps++;
+        }
+        return jumps;
+    }
 }
