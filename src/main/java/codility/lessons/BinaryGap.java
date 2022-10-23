@@ -10,8 +10,8 @@ public class BinaryGap {
 //        System.out.println(solution(8));
 //        System.out.println(solution(42));
 //        System.out.println(solution(32));
-//        System.out.println(solution(1041));
-        System.out.println(solution(20415434));
+       System.out.println(solutionJavaStart2(1041));
+        // System.out.println(solution(20415434));
 
     }
 
@@ -40,13 +40,12 @@ public class BinaryGap {
 
     public static int solution2(int N) {
         String binary = Integer.toBinaryString(N);
-        char[] arr = binary.toCharArray();
 
         int result = 0;
-        for (int i = 0; i < arr.length - 2; i++) {
-            if (arr[i] == '1' && arr[i + 1] == '0') {
-                for (int j = i + 2; j < arr.length; j++) {
-                    if (arr[j] == '1') {
+        for (int i = 0; i < binary.length() - 2; i++) {
+            if (binary.charAt(i) == '1' && binary.charAt(i + 1) == '0') {
+                for (int j = i + 2; j < binary.length(); j++) {
+                    if (binary.charAt(j) == '1') {
                         int newResult = j - i - 1;
                         result = newResult > result ? newResult : result;
                         break;
@@ -59,19 +58,72 @@ public class BinaryGap {
         // return findLongest(arr);
     }
 
-    private static int findLongest(char[] arr) {
+    // private static int findLongest(char[] arr) {
+    //     int result = 0;
+    //     for (int i = 0; i < arr.length - 2; i++) {
+    //         if (arr[i] == '1' && arr[i + 1] == '0') {
+    //             for (int j = i + 2; j < arr.length; j++) {
+    //                 if (arr[j] == '1') {
+    //                     int newResult = j - i - 1;
+    //                     result = newResult > result ? newResult : result;
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    private static int solutionJavaStart(int N) {
+        String binary = Integer.toBinaryString(N);
+
+        int modifier = 1;
+        if (binary.endsWith("1")) modifier = 0;
+
+        String[] split = binary.split("1");
+
         int result = 0;
-        for (int i = 0; i < arr.length - 2; i++) {
-            if (arr[i] == '1' && arr[i + 1] == '0') {
-                for (int j = i + 2; j < arr.length; j++) {
-                    if (arr[j] == '1') {
-                        int newResult = j - i - 1;
-                        result = newResult > result ? newResult : result;
-                        break;
-                    }
-                }
-            }
+
+        for (int i = 0; i < split.length - modifier; i++) {
+            int l = split[i].length();
+            if (l > result) result = l;
         }
+
         return result;
     }
+
+    private static int solutionJavaStart2(int N) {
+        int pow = 0;
+
+        while (true) {
+            if (Math.pow(2, pow) > N) break;
+            pow++;
+        }
+        pow--;
+
+        int maxGap = 0;
+        int gap = 0;
+        int numberLeft = N;
+
+        while (numberLeft > 0) {
+            int x = (int) Math.pow(2, pow);
+            if (numberLeft >= x) {
+                numberLeft = numberLeft - x;
+                if (gap > maxGap) {
+                    maxGap = gap;
+                }
+                gap = 0;
+            } else {
+                gap++;
+            }
+            pow--;
+        }
+
+        return maxGap;
+    }
+
+    // x x x x x
+    //   1 0 0 1
+    // 2^4 = 16
+    // 16 - 9 = 7
 }
