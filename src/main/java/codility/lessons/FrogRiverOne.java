@@ -9,7 +9,7 @@ public class FrogRiverOne {
         System.out.println(solution(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
     }
 
-    public static int solution(int X, int[] A) {
+    private static int solution(int X, int[] A) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < A.length; i++) {
             set.add(A[i]);
@@ -18,5 +18,5 @@ public class FrogRiverOne {
             }
         }
         return -1;
-}
+    }
 }
