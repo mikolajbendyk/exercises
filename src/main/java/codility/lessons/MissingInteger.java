@@ -1,6 +1,8 @@
 package codility.lessons;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MissingInteger {
 
@@ -18,6 +20,19 @@ public class MissingInteger {
         }
 
         return missing;
+    }
 
+    private static int solution2(int[] A) {
+        Set<Integer> nums = new HashSet<>();
+
+        for (int i : A) {
+            nums.add(i);
+        }
+
+        for (int i = 1; i <= A.length; i++) {
+            if (!nums.contains(i)) return i;
+        }
+
+        return A.length + 1;
     }
 }
